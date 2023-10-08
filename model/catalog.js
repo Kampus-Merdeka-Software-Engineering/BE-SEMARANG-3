@@ -8,8 +8,16 @@ function catalogModel(sequelize, Sequelize) {
           allowNull: false,
           primaryKey: true,
         },
+        type: {
+          type: Sequelize.STRING(50),
+          allowNull: false,
+        },
         name: {
           type: Sequelize.STRING(50),
+          allowNull: false,
+        },
+        desc: {
+          type: Sequelize.STRING,
           allowNull: false,
         },
         price: {
