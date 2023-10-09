@@ -1,17 +1,17 @@
 // url
-// // mysql://root:U8g7Ni1Dx4h4PwW5iAZo@containers-us-west-176.railway.app:6040/railway
+// // mysql://root:kSYvSCD9Sfs4U3etkC4Q@containers-us-west-115.railway.app:5562/railway
 
 // database
 // // railway
 
 // host
-// // containers-us-west-176.railway.app
+// // containers-us-west-115.railway.app
 
 // password
-// // U8g7Ni1Dx4h4PwW5iAZo
+// // kSYvSCD9Sfs4U3etkC4Q
 
 // port
-// // 6040
+// // 5562
 
 // user
 // // root
@@ -20,10 +20,10 @@ const { Sequelize } = require("sequelize");
 const { catalogModel } = require("../model/catalog");
 
 // Option 3: Passing parameters separately (other dialects)
-const sequelize = new Sequelize("railway", "root", "U8g7Ni1Dx4h4PwW5iAZo", {
-  host: "containers-us-west-176.railway.app",
+const sequelize = new Sequelize("railway", "root", "kSYvSCD9Sfs4U3etkC4Q", {
+  host: "containers-us-west-115.railway.app",
   dialect: "mysql",
-  port: 6040,
+  port: 5562,
 });
 
 const db = {};
