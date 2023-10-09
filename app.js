@@ -55,6 +55,22 @@ app.post('/api/contact', async(req, res) => {
   }
 })
 
+app.get('/proses_feedback', async(req, res) => {
+  try {
+    const feedback = await Feedback.findAll()
+    res.status(201).json({
+      success:true,
+      message:"Successful",
+      data:feedback
+    })
+  } catch (error) {
+    res.status(500).json({
+      success:false,
+      message:"Usuccessful"
+    })
+  }
+})
+
 // Handle GET Request for Catalog Items
 app.post('/api/catalog', async(req, res) => {
   // Extract form data from the request body
