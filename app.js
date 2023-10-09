@@ -3,6 +3,7 @@ const app = express();
 const port = 3000; 
 const db = require('./db/index')
 const Catalog = db.catalog
+const Feedback = db.feedback
 const bodyParser = require('body-parser')
 const cors = require("cors")
 
@@ -10,7 +11,6 @@ const cors = require("cors")
 app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
 
 
 // Middleware for contact form input validation
@@ -27,13 +27,33 @@ app.post("/proses_feedback", validateFeedback, async (req, res) => {
   try {
     const { firstName, lastName , email, phone, message } = req.body;
     // Save feedback to database using Sequelize model
-    await db.Feedback.create({ firstName, lastName, email, phone, message });
-    res.status(201).json({ message: 'Feedback berhasil disimpan.' });
+    await Feedback.create({ firstName, lastName, email, phone, message });
+    res.status(201).json({ message: 'Message berhasil dikirim.' });
   } catch (error) {
     res.status(500).json({ error: 'Terjadi kesalahan pada server.' });
   }
 });
 
+
+app.post('/api/contact', async(req, res) => {
+  // Extract form data from the request body
+  // const { name, price, rebate, photo } = req.body;
+  const item = req.body
+  console.log(item)
+  try {
+    const contactcreate = await Contact.create(item)
+    res.status(201).json({
+      success:true,
+      message:"Successful",
+      data:contactcreate
+    })
+  } catch (error) {
+    res.status(500).json({
+      success:false,
+      message:"Usuccessful"
+    })
+  }
+})
 
 // Handle GET Request for Catalog Items
 app.post('/api/catalog', async(req, res) => {
