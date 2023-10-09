@@ -7,9 +7,10 @@ const bodyParser = require('body-parser')
 const cors = require("cors")
 
 // Middleware 
+app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors())
+
 
 
 // Middleware for contact form input validation
